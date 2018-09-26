@@ -1,0 +1,58 @@
+.search {
+    width: 100%;
+    border: solid 1px #000;
+    box-shadow: 0 1px 8px #000;
+    padding: 8px;
+    border-radius: 5px;
+    position: relative;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#515151+0,424242+100 */
+    background: rgb(81,81,81); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(81,81,81,1) 0%, rgba(66,66,66,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(81,81,81,1) 0%,rgba(66,66,66,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(81,81,81,1) 0%,rgba(66,66,66,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#424242',GradientType=0 ); /* IE6-9 */
+
+    input {
+        font-family: 'Roboto', sans-serif;
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 24px;
+        background-color: #1a1a1a;
+        color: #f1e8aa;
+        font-weight: 300;
+        border: solid 1px #000;
+        outline: none;
+        border-radius: 4px;
+        box-shadow: 0 1px 4px #666;
+    }
+}
+.auto {
+    position: absolute;
+    z-index: 5;
+    background-color: #1a1a1a;
+    top: 60px;
+    left: 9px;
+    right: 9px;
+    box-shadow: 0 2px 0 #000;
+    border-radius: 5px;
+    overflow: hidden;
+
+    > div {
+        padding: 14px;
+        border-bottom: solid 1px #000;
+        box-shadow: 0 1px 0 #333;
+
+        &:last-of-type {
+            border-bottom: none;
+            box-shadow: none;
+        }
+    }
+
+    small {
+        float: right;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: #888;
+    }
+}
