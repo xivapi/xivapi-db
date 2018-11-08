@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="page">
+    {# Icon + Name #}
+    <div class="page-top">
+        <div>
+            <img src="https://xivapi.com{{ content.Icon }}">
+            <img src="https://xivapi.com{{ content.Icon }}">
+        </div>
+        <div>
+            <h2>
+                <span>{{ content.LevelItem }}</span>
+                {{ content.Name }} <small>#{{ content.ID }}</small>
+            </h2>
+            <div>
+                {{ content.ItemKind.Name }} - {{ content.ItemUICategory.Name }}
+                <p>{{ content.Description }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content">
+
+        {# Details#}
+        <div class="page-details">
+            <div class="one">
+                <h3>&bull; Class/Job</h3>
+                <p>
+                    <span>{{ content.LevelEquip }}</span>,
+                    {{ content.ClassJobCategory.Name }}
+
+                    {# Search category #}
+                    {% if content.ItemSearchCategory.Name is defined %}
+                    - {{ content.ItemSearchCategory.Name }}
+                    {% endif %}
+                </p>
+            </div>
+            <div class="one">
+                <h3>&bull; Attributes</h3>
+                <table>
+                    <tbody>
+                    {% for i in 0..5 %}
+                        {% set attribute = content["BaseParam" ~ i] %}
+                        {% set value = content["BaseParamValue" ~ i] %}
+                        {% set hq = content["BaseParamValueSpecial" ~ i] %}
+
+                        {% if value > 0 %}
+                        <tr>
+                            <td width="50%" class="stat1">{{ attribute.Name }}</td>
+                            <td width="25%" class="stat2">{{ value|number_format }}</td>
+                            <td width="25%" class="stat3">{{ hq > 0 ? (value + hq)|number_format : '' }}</td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <hr>
+
+            <div class="one">
+                <h3>&bull; Repair</h3>
+                <p>{{ content.ItemRepair.Name }}</p>
+            </div>
+            <div class="one">
+                <h3>&bull; Glamour</h3>
+                <p>{{ content.ItemGlamour.Name }}</p>
+            </div>
+
+            <hr>
+
+            <div class="one">
+                <h3>&bull; Patch</h3>
+                <p>{{ content.GamePatch.Name }}</p>
+            </div>
+
+            <div class="one">
+                <h3>&bull; API</h3>
+                <p><a href="https://xivapi.com{{ content.Url }}" target="_blank">https://xivapi.com{{ content.Url }}</a></p>
+            </div>
+        </div>
+
+        {# Market Board #}
+        <div class="page-market">
+            <div class="page-market-server">
+                <div>
+                    Hyperion &nbsp; <small>MARKET BOARD</small>
+                </div>
+                <div>
+                    <select name="market-server" id="market-server">
+                        <option value="Hyperion">Hyperion</option>
+                        <option value="Moogle">Moogle</option>
+                        <option value="Odin">Odin</option>
+                    </select>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="30%">PRICE</th>
+                        <th width="10%">QTY</th>
+                        <th width="10%">HQ</th>
+                        <th width="40%">RETAINER</th>
+                        <th width="10%">TOWN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for row in market.Prices %}
+                    <tr>
+                        <td class="price" valign="middle">
+                            <img src="/misc/coin.png" height="16">
+                            {{ row.Price|number_format }}
+                        </td>
+                        <td class="qty" valign="middle">
+                            {{ row.Quantity|number_format }}
+                        </td>
+                        <td class="hq" valign="middle" align="center">
+                            {{ row.IsHQ ? '<img src="/misc/hq.png">' : '' }}
+                        </td>
+                        <td class="retainer" valign="middle">
+                            {{ row.RetainerName }}
+                        </td>
+                        <td class="town" valign="middle" align="center">
+                            <img src="https://xivapi.com{{ row.Town.Icon }}" height="28">
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">None for sale!</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <small>
+                Prices are in real-time via the FFXIV Companion App API
+            </small>
+        </div>
+
+
+    </div>
+
+</div>
+{% endblock %}

@@ -1,6 +1,5 @@
 const $search = $('.search input');
-const $results = $('.results');
-const $main = $('main');
+const $results = $('.search-results');
 
 let timeout = null,
     resetSearch = true,
@@ -23,6 +22,13 @@ $search.on('keyup', event => {
         searchPage   = 1;
     }
 
+    if (string.length < 1) {
+        // hide results
+        $results.removeClass('on');
+
+        return;
+    }
+
     clearTimeout(timeout);
     timeout = setTimeout(function() {
         $.ajax({
@@ -40,16 +46,16 @@ $search.on('keyup', event => {
 
                 // reset if page 1
                 if (response.Pagination.Page === 1 || resetSearch) {
-                    $results.html('');
+                    $results.find('.results').html('');
                 }
 
-                $results.append(`<div class="results-page">PAGE ${response.Pagination.Page}</div>`);
+                $results.find('.results').append(`<div class="results-page">PAGE ${response.Pagination.Page}</div>`);
 
                 for (let i in results) {
                     let res = results[i];
 
-                    $results.append(`
-                        <button id="LoadPage" class="res-${res.GameType}" data-id="${res._},${res.ID}">
+                    $results.find('.results').append(`
+                        <a href="/content${res.Url}">
                             <div>
                                 <img src="https://xivapi.com/${res.Icon}">
                                 <img src="https://xivapi.com/${res.Icon}">
@@ -59,9 +65,12 @@ $search.on('keyup', event => {
                                 <small>${res._}</small>
                             </div>
                              
-                        </button>
+                        </a>
                     `);
                 }
+
+                // show results
+                $results.addClass('on');
 
                 // if we can load more results, show button, incase browser detection is poop
                 if (canLoadMoreResults) {
@@ -74,62 +83,6 @@ $search.on('keyup', event => {
         })
     }, 150);
 });
-
-// on clicking a thing
-$('html').on('click', '.results button', event => {
-    let info = $(event.currentTarget).attr('data-id').split(',');
-    $results.html('');
-
-    switch (info[0]) {
-        default:
-            load404(info[0]);
-            break;
-            
-        case 'item':
-            query(`https://xivapi.com/Item/${info[1]}`, loadItem);
-            break;
-    }
-});
-
-function query(url, callback) {
-    $.ajax({
-        url: url,
-        success: callback,
-        error: (a,b,c) => {
-            console.error(a,b,c);
-        }
-    });
-}
-
-// Page stuff
-function load404(type) {
-    $main.html(`${type} - idk what this is!`);
-}
-
-function loadItem(item) {
-    $main.html('');
-
-    // top
-    $main.append(`
-        <div class="page-top">
-            <span>Patch ${item.GamePatch.Version}</span>
-            <div class="page-top-frame">
-                <img src="http://xivapi.com/${item.Icon}">
-                <div>
-                    <h2>${item.Name}</h2>
-                    <div>
-                        ${item.ItemKind.Name} - ${item.ItemUICategory.Name}
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    `);
-}
-
-setTimeout(() => {
-    query('https://xivapi.com/Item/1675', loadItem);
-}, 500);
 
 // Auto load results on scroll
 $(window).on('scroll', event => {

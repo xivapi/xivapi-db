@@ -2,13 +2,18 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Dalamud{% endblock %}</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
         <link rel="stylesheet" href="/ui/ui.css">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+        {% include 'header.html.twig' %}
+
+        <main>
+            {% block body %}{% endblock %}
+        </main>
 
         {# lol jquery U WOT #}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

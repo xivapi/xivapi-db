@@ -55,7 +55,17 @@ html {
 
 header {
   margin: 50px 0 20px 0;
-  position: relative; }
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  header .logo {
+    flex: 0 1 180px;
+    text-align: left; }
+  header .search {
+    flex: 0 1 600px;
+    text-align: left; }
 
 main {
   width: 1200px;
@@ -64,14 +74,22 @@ main {
 h1 {
   margin-bottom: 20px; }
 
-.search {
-  width: 720px;
-  margin: 0 auto 20px auto;
+a {
+  color: #ffb4ec;
+  text-decoration: none; }
+  a:hover {
+    color: #ff93e7; }
+
+.search input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 24px;
+  color: #f1e8aa;
+  font-weight: 300;
   border: solid 1px #000;
-  box-shadow: 0 1px 8px #000;
-  padding: 8px;
-  border-radius: 5px;
-  position: relative;
+  outline: none;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px #000;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#515151+0,424242+100 */
   background: #515151;
   /* Old browsers */
@@ -83,134 +101,308 @@ h1 {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#424242',GradientType=0 );
   /* IE6-9 */ }
-  .search input {
-    font-family: 'Roboto', sans-serif;
-    width: 100%;
-    padding: 12px 15px;
-    font-size: 24px;
-    background-color: #1a1a1a;
-    color: #f1e8aa;
-    font-weight: 300;
+
+.search nav {
+  margin-top: 8px; }
+  .search nav > button {
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #fff;
+    padding: 10px 15px 9px 15px;
     border: solid 1px #000;
     outline: none;
     border-radius: 4px;
-    box-shadow: 0 1px 4px #666; }
+    box-shadow: 0 1px 3px #000;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#515151+0,424242+100 */
+    background: #515151;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #3c3c3c 0%, #282828 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #3c3c3c 0%, #282828 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #3c3c3c 0%, #282828 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#424242',GradientType=0 );
+    /* IE6-9 */ }
+    .search nav > button:hover {
+      cursor: pointer;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#515151+0,424242+100 */
+      background: #515151;
+      /* Old browsers */
+      background: -moz-linear-gradient(top, #464646 0%, #373737 100%);
+      /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, #464646 0%, #373737 100%);
+      /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, #464646 0%, #373737 100%);
+      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#424242',GradientType=0 );
+      /* IE6-9 */ }
 
-.results {
-  margin: 0 100px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-self: flex-start; }
-  .results > button {
-    flex: 0 1 calc(25% - 10px);
-    align-items: stretch;
-    margin: 0 10px 10px 0;
+.search-results {
+  display: none; }
+  .search-results.on {
+    display: block; }
+  .search-results .results {
+    margin: 0 100px;
     display: flex;
-    background-color: #424242;
-    text-shadow: 0 0 2px 1px #000;
-    border: none;
-    border-radius: 5px;
-    overflow: hidden;
-    line-height: 20px;
-    padding: 0;
-    text-align: left;
-    cursor: pointer;
-    outline: none;
-    transition: .2s; }
-    .results > button:hover {
-      background-color: #333; }
-    .results > button > div:first-of-type {
-      flex: 0 1 84px;
-      width: 84px;
-      min-height: 84px;
-      position: relative;
-      overflow: hidden; }
-      .results > button > div:first-of-type img:first-of-type {
-        max-height: 92px;
-        max-width: 92px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 3; }
-      .results > button > div:first-of-type img:last-of-type {
-        filter: blur(30px);
-        width: 150px;
-        height: 150px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1; }
-    .results > button.res-Achievement > div:first-of-type img:first-of-type,
-    .results > button.res-Emote > div:first-of-type img:first-of-type {
-      border-radius: 6px; }
-    .results > button > div:last-of-type {
-      padding: 5px 10px 5px 15px;
-      flex: 0 1 calc(100% - 84px);
-      align-self: center; }
-      .results > button > div:last-of-type h3 {
-        display: block;
-        font-size: 16px;
-        font-weight: 300;
-        margin-bottom: 5px;
-        color: #fbffaa; }
-      .results > button > div:last-of-type small {
-        display: block;
-        font-size: 14px;
-        line-height: 16px;
-        color: #aaa; }
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-self: flex-start; }
+    .search-results .results > a {
+      flex: 0 1 calc(25% - 10px);
+      align-items: stretch;
+      margin: 0 10px 10px 0;
+      display: flex;
+      background-color: #424242;
+      text-shadow: 0 0 2px 1px #000;
+      border: none;
+      border-radius: 5px;
+      overflow: hidden;
+      line-height: 20px;
+      padding: 0;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+      transition: .2s;
+      text-decoration: none; }
+      .search-results .results > a:hover {
+        background-color: #333; }
+      .search-results .results > a > div:first-of-type {
+        flex: 0 1 84px;
+        width: 84px;
+        min-height: 84px;
+        position: relative;
+        overflow: hidden; }
+        .search-results .results > a > div:first-of-type img:first-of-type {
+          max-height: 92px;
+          max-width: 92px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 3; }
+        .search-results .results > a > div:first-of-type img:last-of-type {
+          filter: blur(30px);
+          width: 150px;
+          height: 150px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 1; }
+      .search-results .results > a.res-Achievement > div:first-of-type img:first-of-type,
+      .search-results .results > a.res-Emote > div:first-of-type img:first-of-type {
+        border-radius: 6px; }
+      .search-results .results > a > div:last-of-type {
+        padding: 5px 10px 5px 15px;
+        flex: 0 1 calc(100% - 84px);
+        align-self: center; }
+        .search-results .results > a > div:last-of-type h3 {
+          display: block;
+          font-size: 16px;
+          font-weight: 300;
+          margin-bottom: 5px;
+          color: #fbffaa; }
+        .search-results .results > a > div:last-of-type small {
+          display: block;
+          font-size: 14px;
+          line-height: 16px;
+          color: #aaa; }
+  .search-results .results-page {
+    flex: 0 1 100%;
+    padding: 10px 0;
+    color: #666;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 2px; }
+  .search-results .more {
+    text-align: center;
+    margin-top: 10px;
+    opacity: 0;
+    transition: .3s; }
+    .search-results .more.on {
+      opacity: 1; }
+    .search-results .more > button {
+      background-color: #333;
+      border: solid 1px #000;
+      box-shadow: 0 1px 4px #111;
+      color: #aaa;
+      padding: 10px 20px 8px 20px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-size: 14px;
+      outline: none;
+      cursor: pointer; }
 
-.results-page {
-  flex: 0 1 100%;
-  padding: 10px 0;
-  color: #666;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 2px; }
-
-.more {
-  text-align: center;
-  margin-top: 10px;
-  opacity: 0;
-  transition: .3s; }
-  .more.on {
-    opacity: 1; }
-  .more > button {
-    background-color: #333;
-    border: solid 1px #000;
-    box-shadow: 0 1px 4px #111;
-    color: #aaa;
-    padding: 10px 20px 8px 20px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-size: 14px;
-    outline: none;
-    cursor: pointer; }
+.page {
+  width: 100%;
+  margin: 0 auto 30px auto;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px #000;
+  background-color: #333;
+  overflow: hidden; }
 
 .page-top {
-  width: 600px;
-  margin: 0 auto 30px auto; }
-  .page-top .page-top-frame {
-    display: flex; }
-    .page-top .page-top-frame > img {
-      flex: 0 1 64px;
-      height: 64px;
-      width: 64px;
-      border-radius: 8px;
-      border: solid 1px #000;
-      box-shadow: 0 1px 8px #111; }
-    .page-top .page-top-frame > div:first-of-type {
-      padding: 0 0 0 20px; }
-      .page-top .page-top-frame > div:first-of-type h2 {
-        font-size: 32px;
-        font-weight: 300;
-        margin-bottom: 10px; }
-      .page-top .page-top-frame > div:first-of-type > div {
+  display: flex;
+  padding: 20px;
+  border-bottom: solid 1px #000;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#515151+0,424242+100 */
+  background: #515151;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #464646 0%, #3c3c3c 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #464646 0%, #3c3c3c 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #464646 0%, #3c3c3c 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 1px 5px #222; }
+  .page-top > div:first-of-type {
+    flex: 0 1 128px;
+    width: 128px;
+    height: 128px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    border: solid 1px #000;
+    box-shadow: 0 1px 3px #000; }
+    .page-top > div:first-of-type img:first-of-type {
+      max-height: 92px;
+      max-width: 92px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3; }
+    .page-top > div:first-of-type img:last-of-type {
+      filter: blur(30px);
+      width: 150px;
+      height: 150px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1; }
+  .page-top > div:last-of-type {
+    padding: 0 0 0 30px; }
+    .page-top > div:last-of-type h2 {
+      font-size: 32px;
+      font-weight: 300;
+      margin-bottom: 20px; }
+      .page-top > div:last-of-type h2 small {
+        font-weight: bold;
+        font-size: 14px;
+        color: #555; }
+      .page-top > div:last-of-type h2 span {
+        color: yellow; }
+    .page-top > div:last-of-type div {
+      font-size: 20px;
+      color: #ddd; }
+      .page-top > div:last-of-type div p {
         font-size: 16px;
-        color: #888; }
-  .page-top span {
-    float: right;
-    color: #666; }
+        color: #888;
+        margin-top: 10px;
+        max-width: 800px;
+        line-height: 20px; }
+
+.page-content {
+  display: flex; }
+  .page-content .page-details {
+    flex: 1 1 50%;
+    padding: 20px;
+    border-right: solid 1px #000; }
+    .page-content .page-details h3 {
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: #888; }
+    .page-content .page-details hr {
+      margin: 30px -21px;
+      border: none;
+      background-color: #000;
+      height: 1px; }
+    .page-content .page-details .one, .page-content .page-details .two, .page-content .page-details .three {
+      font-size: 18px;
+      margin-bottom: 30px; }
+      .page-content .page-details .one span, .page-content .page-details .two span, .page-content .page-details .three span {
+        color: #feffc5; }
+      .page-content .page-details .one table, .page-content .page-details .two table, .page-content .page-details .three table {
+        width: 100%; }
+        .page-content .page-details .one table th, .page-content .page-details .one table td, .page-content .page-details .two table th, .page-content .page-details .two table td, .page-content .page-details .three table th, .page-content .page-details .three table td {
+          padding: 5px; }
+    .page-content .page-details .stat1 {
+      color: #fff;
+      font-size: 15px;
+      letter-spacing: 1px; }
+    .page-content .page-details .stat2 {
+      color: #fff390; }
+    .page-content .page-details .stat3 {
+      color: #7dff68; }
+  .page-content .page-market {
+    flex: 1 1 50%;
+    background-color: #222; }
+    .page-content .page-market .page-market-server {
+      background-color: #222;
+      display: flex;
+      padding-bottom: 10px; }
+      .page-content .page-market .page-market-server small {
+        font-size: 14px;
+        color: #555; }
+      .page-content .page-market .page-market-server > div:first-of-type {
+        flex: 0 1 75%;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 15px; }
+      .page-content .page-market .page-market-server > div:last-of-type {
+        flex: 0 1 25%;
+        text-align: right;
+        padding: 6px; }
+        .page-content .page-market .page-market-server > div:last-of-type select {
+          width: 100%;
+          padding: 8px;
+          background-color: #222;
+          color: #aaa;
+          border: solid 1px #888;
+          border-radius: 3px;
+          font-size: 14px; }
+    .page-content .page-market > small {
+      font-size: 13px;
+      color: #888;
+      padding: 15px;
+      display: block;
+      text-align: center; }
+    .page-content .page-market table {
+      width: 100%; }
+      .page-content .page-market table th, .page-content .page-market table td {
+        padding: 15px; }
+      .page-content .page-market table th {
+        background-color: #222;
+        font-weight: bold;
+        font-size: 13px;
+        color: #888;
+        text-align: left; }
+      .page-content .page-market table tr {
+        border-bottom: solid 1px #000; }
+        .page-content .page-market table tr:hover {
+          background-color: #333; }
+          .page-content .page-market table tr:hover td.retainer {
+            color: #fff; }
+      .page-content .page-market table td {
+        border-right: solid 1px #000; }
+        .page-content .page-market table td:last-of-type {
+          border: none; }
+        .page-content .page-market table td.price {
+          font-size: 18px;
+          color: yellow; }
+        .page-content .page-market table td.qty {
+          font-size: 16px; }
+        .page-content .page-market table td.retainer {
+          color: #aaa; }
+        .page-content .page-market table td.town img {
+          margin: -8px 0; }

@@ -1,4 +1,6 @@
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 html {
     font-family: 'Roboto', sans-serif;
     background-color: #222222;
@@ -7,6 +9,21 @@ html {
 header {
     margin: 50px 0 20px 0;
     position: relative;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .logo {
+        flex: 0 1 180px;
+        text-align: left;
+    }
+
+    .search {
+        flex: 0 1 600px;
+        text-align: left;
+    }
 }
 main {
     width: 1200px;
@@ -14,4 +31,13 @@ main {
 }
 h1 {
     margin-bottom: 20px;
+}
+
+a {
+    color: #ffb4ec;
+    text-decoration: none;
+
+    &:hover {
+        color: #ff93e7;
+    }
 }

@@ -1,38 +1,246 @@
-.page-top {
-    width: 600px;
+.page {
+    width: 100%;
     margin: 0 auto 30px auto;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px #000;
+    background-color: #333;
+    overflow: hidden;
+}
+.page-top {
+    display: flex;
+    padding: 20px;
+    border-bottom: solid 1px #000;
 
-    .page-top-frame {
-        display: flex;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#515151+0,424242+100 */
+    background: rgb(81,81,81); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(70,70,70,1) 0%, rgba(60,60,60,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(70,70,70,1) 0%,rgba(60,60,60,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(70,70,70,1) 0%,rgba(60,60,60,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 
-        > img {
-            flex: 0 1 64px;
-            height: 64px;
-            width: 64px;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 1px 5px #222;
 
-            border-radius: 8px;
-            border: solid 1px #000;
-            box-shadow: 0 1px 8px #111;
+    > div:first-of-type {
+        flex: 0 1 128px;
+        width: 128px;
+        height: 128px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+        border: solid 1px #000;
+        box-shadow: 0 1px 3px #000;
+
+        img:first-of-type {
+            max-height: 92px;
+            max-width: 92px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
         }
 
-        > div:first-of-type {
-            padding: 0 0 0 20px;
-
-            h2 {
-                font-size: 32px;
-                font-weight: 300;
-                margin-bottom: 10px;
-            }
-
-            > div {
-                font-size: 16px;
-                color: #888;
-            }
+        img:last-of-type {
+            filter: blur(30px);
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
         }
     }
 
-    span {
-        float: right;
-        color: #666;
+    > div:last-of-type {
+        padding: 0 0 0 30px;
+
+        h2 {
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 20px;
+
+            small {
+                font-weight: bold;
+                font-size: 14px;
+                color: #555;
+            }
+
+            span {
+                color: yellow;
+            }
+        }
+
+        div {
+            font-size: 20px;
+            color: #ddd;
+
+            p {
+                font-size: 16px;
+                color: #888;
+                margin-top: 10px;
+                max-width: 800px;
+                line-height: 20px;
+            }
+        }
+    }
+}
+.page-content {
+    display: flex;
+
+    .page-details {
+        flex: 1 1 50%;
+        padding: 20px;
+        border-right: solid 1px #000;
+
+        h3 {
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: #888;
+        }
+
+        hr {
+            margin: 30px -21px;
+            border: none;
+            background-color: #000;
+            height: 1px;
+        }
+
+        .one, .two, .three {
+            font-size: 18px;
+            margin-bottom: 30px;
+
+            span {
+                color: #feffc5;
+            }
+
+            table {
+                width: 100%;
+
+                th, td {
+                    padding: 5px;
+                }
+            }
+        }
+
+        .stat1 {
+            color: #fff;
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+
+        .stat2 {
+            color: #fff390;
+        }
+
+        .stat3 {
+            color: #7dff68;
+        }
+    }
+
+    .page-market {
+        flex: 1 1 50%;
+        background-color: #222;
+
+        .page-market-server {
+            background-color: #222;
+            display: flex;
+            padding-bottom: 10px;
+
+            small {
+                font-size: 14px;
+                color: #555;
+            }
+
+            > div:first-of-type {
+                flex: 0 1 75%;
+                font-size: 20px;
+                font-weight: bold;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                padding: 15px;
+            }
+
+            > div:last-of-type {
+                flex: 0 1 25%;
+                text-align: right;
+                padding: 6px;
+
+                select {
+                    width: 100%;
+                    padding: 8px;
+                    background-color: #222;
+                    color: #aaa;
+                    border: solid 1px #888;
+                    border-radius: 3px;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        > small {
+            font-size: 13px;
+            color: #888;
+            padding: 15px;
+            display: block;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+
+            th, td {
+                padding: 15px;
+            }
+
+            th {
+                background-color: #222;
+                font-weight: bold;
+                font-size: 13px;
+                color: #888;
+                text-align: left;
+            }
+
+            tr {
+                border-bottom: solid 1px #000;
+
+                &:hover {
+                    background-color: #333;
+
+                    td.retainer {
+                        color: #fff;
+                    }
+                }
+            }
+
+            td {
+                border-right: solid 1px #000;
+
+                &:last-of-type {
+                    border: none;
+                }
+
+                &.price {
+                    font-size: 18px;
+                    color: yellow;
+                }
+
+                &.qty {
+                    font-size: 16px;
+                }
+
+                &.retainer {
+                    color: #aaa;
+                }
+
+                &.town img {
+                    margin: -8px 0;
+                }
+            }
+        }
     }
 }

@@ -75,8 +75,7 @@ var xiv =
 /***/ (function(module, exports) {
 
 var $search = $('.search input');
-var $results = $('.results');
-var $main = $('main');
+var $results = $('.search-results');
 
 var timeout = null,
     resetSearch = true,
@@ -93,6 +92,13 @@ $search.on('keyup', function (event) {
         searchString = string;
         resetSearch = true;
         searchPage = 1;
+    }
+
+    if (string.length < 1) {
+        // hide results
+        $results.removeClass('on');
+
+        return;
     }
 
     clearTimeout(timeout);
@@ -112,16 +118,19 @@ $search.on('keyup', function (event) {
 
                 // reset if page 1
                 if (response.Pagination.Page === 1 || resetSearch) {
-                    $results.html('');
+                    $results.find('.results').html('');
                 }
 
-                $results.append('<div class="results-page">PAGE ' + response.Pagination.Page + '</div>');
+                $results.find('.results').append('<div class="results-page">PAGE ' + response.Pagination.Page + '</div>');
 
                 for (var i in results) {
                     var res = results[i];
 
-                    $results.append('\n                        <button id="LoadPage" class="res-' + res.GameType + '" data-id="' + res._ + ',' + res.ID + '">\n                            <div>\n                                <img src="https://xivapi.com/' + res.Icon + '">\n                                <img src="https://xivapi.com/' + res.Icon + '">\n                            </div>\n                            <div>\n                                <h3>' + res.Name + '</h3>\n                                <small>' + res._ + '</small>\n                            </div>\n                             \n                        </button>\n                    ');
+                    $results.find('.results').append('\n                        <a href="/content' + res.Url + '">\n                            <div>\n                                <img src="https://xivapi.com/' + res.Icon + '">\n                                <img src="https://xivapi.com/' + res.Icon + '">\n                            </div>\n                            <div>\n                                <h3>' + res.Name + '</h3>\n                                <small>' + res._ + '</small>\n                            </div>\n                             \n                        </a>\n                    ');
                 }
+
+                // show results
+                $results.addClass('on');
 
                 // if we can load more results, show button, incase browser detection is poop
                 if (canLoadMoreResults) {
@@ -134,48 +143,6 @@ $search.on('keyup', function (event) {
         });
     }, 150);
 });
-
-// on clicking a thing
-$('html').on('click', '.results button', function (event) {
-    var info = $(event.currentTarget).attr('data-id').split(',');
-    $results.html('');
-
-    switch (info[0]) {
-        default:
-            load404(info[0]);
-            break;
-
-        case 'item':
-            query('https://xivapi.com/Item/' + info[1], loadItem);
-            break;
-    }
-});
-
-function query(url, callback) {
-    $.ajax({
-        url: url,
-        success: callback,
-        error: function error(a, b, c) {
-            console.error(a, b, c);
-        }
-    });
-}
-
-// Page stuff
-function load404(type) {
-    $main.html(type + ' - idk what this is!');
-}
-
-function loadItem(item) {
-    $main.html('');
-
-    // top
-    $main.append('\n        <div class="page-top">\n            <span>Patch ' + item.GamePatch.Version + '</span>\n            <div class="page-top-frame">\n                <img src="http://xivapi.com/' + item.Icon + '">\n                <div>\n                    <h2>' + item.Name + '</h2>\n                    <div>\n                        ' + item.ItemKind.Name + ' - ' + item.ItemUICategory.Name + '\n                    </div>\n                </div>\n            </div>\n            \n        </div>\n    ');
-}
-
-setTimeout(function () {
-    query('https://xivapi.com/Item/1675', loadItem);
-}, 500);
 
 // Auto load results on scroll
 $(window).on('scroll', function (event) {
