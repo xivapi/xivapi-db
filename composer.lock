@@ -4,8 +4,116 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e5fc7767279c4a8b93eac675d1151ca6",
+    "content-hash": "3f1057fe109d2e65f883c3c41bf0e8cb",
     "packages": [
+        {
+            "name": "deployer/deployer",
+            "version": "v6.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deployphp/deployer.git",
+                "reference": "3013995ad728e4d3450a6fa5d8ae90a9d7be5a17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deployphp/deployer/zipball/3013995ad728e4d3450a6fa5d8ae90a9d7be5a17",
+                "reference": "3013995ad728e4d3450a6fa5d8ae90a9d7be5a17",
+                "shasum": ""
+            },
+            "require": {
+                "deployer/phar-update": "~2.1",
+                "php": "~7.0",
+                "pimple/pimple": "~3.0",
+                "symfony/console": "~2.7|~3.0|~4.0",
+                "symfony/process": "~2.7|~3.0|~4.0",
+                "symfony/yaml": "~2.7|~3.0|~4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.4.3"
+            },
+            "bin": [
+                "bin/dep"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Deployer\\": "src/"
+                },
+                "files": [
+                    "src/Support/helpers.php",
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Medvedev",
+                    "email": "anton@medv.io"
+                }
+            ],
+            "description": "Deployment Tool",
+            "homepage": "https://deployer.org",
+            "time": "2018-08-27T06:37:53+00:00"
+        },
+        {
+            "name": "deployer/phar-update",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deployphp/phar-update.git",
+                "reference": "a6c7c3a1b2eb6983ebeb59cd1dc1c2e9df115c4a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deployphp/phar-update/zipball/a6c7c3a1b2eb6983ebeb59cd1dc1c2e9df115c4a",
+                "reference": "a6c7c3a1b2eb6983ebeb59cd1dc1c2e9df115c4a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/console": "~2.7|~3.0|~4.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "1.1.0",
+                "phpunit/phpunit": "3.7.*",
+                "symfony/process": "~2.7|~3.0|~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Deployer\\Component\\PharUpdate\\": "src/",
+                    "Deployer\\Component\\PHPUnit\\": "src/PHPUnit/",
+                    "Deployer\\Component\\Version\\": "src/Version/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Herrera",
+                    "email": "kevin@herrera.io",
+                    "homepage": "http://kevin.herrera.io"
+                },
+                {
+                    "name": "Anton Medvedev",
+                    "email": "anton@medv.io",
+                    "homepage": "https://medv.io"
+                }
+            ],
+            "description": "Integrates Phar Update to Symfony Console.",
+            "homepage": "https://github.com/deployphp/phar-update",
+            "keywords": [
+                "console",
+                "phar",
+                "update"
+            ],
+            "time": "2018-02-27T17:29:10+00:00"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.6.0",
@@ -646,6 +754,56 @@
                 "reflection"
             ],
             "time": "2018-06-14T14:45:07+00:00"
+        },
+        {
+            "name": "pimple/pimple",
+            "version": "v3.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silexphp/Pimple.git",
+                "reference": "9e403941ef9d65d20cba7d54e29fe906db42cf32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/9e403941ef9d65d20cba7d54e29fe906db42cf32",
+                "reference": "9e403941ef9d65d20cba7d54e29fe906db42cf32",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "psr/container": "^1.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^3.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Pimple": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Pimple, a simple Dependency Injection Container",
+            "homepage": "http://pimple.sensiolabs.org",
+            "keywords": [
+                "container",
+                "dependency injection"
+            ],
+            "time": "2018-01-21T07:42:36+00:00"
         },
         {
             "name": "psr/cache",
@@ -1817,6 +1975,55 @@
             "time": "2018-08-06T14:22:27+00:00"
         },
         {
+            "name": "symfony/process",
+            "version": "v4.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "86cdb930a6a855b0ab35fb60c1504cb36184f843"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/86cdb930a6a855b0ab35fb60c1504cb36184f843",
+                "reference": "86cdb930a6a855b0ab35fb60c1504cb36184f843",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "https://symfony.com",
+            "time": "2018-08-03T11:13:38+00:00"
+        },
+        {
             "name": "symfony/routing",
             "version": "v4.1.4",
             "source": {
@@ -2328,55 +2535,6 @@
                 "environment"
             ],
             "time": "2018-07-26T11:24:31+00:00"
-        },
-        {
-            "name": "symfony/process",
-            "version": "v4.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/process.git",
-                "reference": "86cdb930a6a855b0ab35fb60c1504cb36184f843"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/86cdb930a6a855b0ab35fb60c1504cb36184f843",
-                "reference": "86cdb930a6a855b0ab35fb60c1504cb36184f843",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Process\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Process Component",
-            "homepage": "https://symfony.com",
-            "time": "2018-08-03T11:13:38+00:00"
         },
         {
             "name": "symfony/web-server-bundle",
