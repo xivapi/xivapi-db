@@ -7,7 +7,7 @@
         <title>{% block title %}Dalamud{% endblock %}</title>
         <link rel="shortcut icon" type="image/png" href="/favicon.png">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
-        <link rel="stylesheet" href="/ui/ui.css">
+        <link rel="stylesheet" href="/ui/ui.css?v={{ siteVersion().hash }}">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -18,9 +18,20 @@
             {% block body %}{% endblock %}
         </main>
 
+        <footer>
+            Premium Virtue (Phoenix)
+            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            Discord: Vekien#3458
+            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            Twitter: <a href="https://twitter.com/viion">Viion</a>
+            <br>
+            <small>v{{ siteVersion().version }} - Deployed {{ siteVersion().time }}</small>
+            <small>ALL FINAL FANTASY XIV CONTENT IS PROPERTY OF SQUARE ENIX CO., LTD</small>
+        </footer>
+
         {# lol jquery U WOT #}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="/ui/app.js"></script>
+        <script src="/ui/app.js?v={{ siteVersion().hash }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

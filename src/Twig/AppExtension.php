@@ -19,11 +19,21 @@ class AppExtension extends AbstractExtension
     
     public function getFunctions()
     {
-        return [];
+        return [
+            new \Twig_SimpleFunction('siteVersion', [$this, 'getApiVersion']),
+        ];
     }
     
     public function splitWordByCapitalLetters($string)
     {
         return preg_replace('/(?<!\ )[A-Z]/', ' $0', $string);
+    }
+    
+    /**
+     * Get API version information
+     */
+    public function getApiVersion()
+    {
+        return SiteVersion::get();
     }
 }
