@@ -3,6 +3,7 @@
 /public/bundles/
 /var/
 /vendor/
+git_version.txt
 
 ###> symfony/web-server-bundle ###
 /.web-server-pid
