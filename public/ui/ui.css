@@ -68,7 +68,7 @@ header {
     text-align: left; }
 
 main {
-  width: 1200px;
+  max-width: 1600px;
   margin: 25px auto; }
 
 h1 {
@@ -238,7 +238,7 @@ a {
 .page {
   width: 100%;
   margin: 0 auto 30px auto;
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: 0 1px 5px #000;
   background-color: #333;
   overflow: hidden; }
@@ -248,13 +248,13 @@ a {
   padding: 20px;
   border-bottom: solid 1px #000;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#515151+0,424242+100 */
-  background: #515151;
+  background: #464646;
   /* Old browsers */
-  background: -moz-linear-gradient(top, #464646 0%, #3c3c3c 100%);
+  background: -moz-linear-gradient(top, #464646 0%, #373737 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #464646 0%, #3c3c3c 100%);
+  background: -webkit-linear-gradient(top, #464646 0%, #373737 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #464646 0%, #3c3c3c 100%);
+  background: linear-gradient(to bottom, #464646 0%, #373737 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   position: relative;
   z-index: 10;
@@ -268,7 +268,7 @@ a {
     border-radius: 5px;
     border: solid 1px #000;
     box-shadow: 0 1px 3px #000; }
-    .page-top > div:first-of-type img:first-of-type {
+    .page-top > div:first-of-type img:nth-of-type(1) {
       max-height: 92px;
       max-width: 92px;
       position: absolute;
@@ -276,8 +276,8 @@ a {
       top: 50%;
       transform: translate(-50%, -50%);
       z-index: 3; }
-    .page-top > div:first-of-type img:last-of-type {
-      filter: blur(30px);
+    .page-top > div:first-of-type img:nth-of-type(2), .page-top > div:first-of-type img:nth-of-type(3), .page-top > div:first-of-type img:nth-of-type(4) {
+      filter: blur(25px);
       width: 150px;
       height: 150px;
       position: absolute;
@@ -294,7 +294,7 @@ a {
       .page-top > div:last-of-type h2 small {
         font-weight: bold;
         font-size: 14px;
-        color: #555; }
+        color: #888; }
       .page-top > div:last-of-type h2 span {
         color: yellow; }
     .page-top > div:last-of-type div {
@@ -306,6 +306,12 @@ a {
         margin-top: 10px;
         max-width: 800px;
         line-height: 20px; }
+    .page-top > div:last-of-type > em {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 20px;
+      color: #666; }
 
 .page-content {
   display: flex; }
@@ -319,7 +325,7 @@ a {
       letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 10px;
-      color: #888; }
+      color: #aaa; }
     .page-content .page-details hr {
       margin: 30px -21px;
       border: none;
@@ -342,6 +348,9 @@ a {
       color: #fff390; }
     .page-content .page-details .stat3 {
       color: #7dff68; }
+    .page-content .page-details .search-icon {
+      vertical-align: bottom;
+      margin: 0 5px 0 0; }
   .page-content .page-market {
     flex: 1 1 50%;
     background-color: #222; }
@@ -366,17 +375,42 @@ a {
         .page-content .page-market .page-market-server > div:last-of-type select {
           width: 100%;
           padding: 8px;
-          background-color: #222;
           color: #aaa;
-          border: solid 1px #888;
+          border: solid 1px #444;
           border-radius: 3px;
-          font-size: 14px; }
+          font-size: 14px;
+          outline: none;
+          transition: .1s;
+          box-shadow: 0 1px 2px #000;
+          cursor: pointer;
+          /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#515151+0,424242+100 */
+          background: #3c3c3c;
+          /* Old browsers */
+          background: -moz-linear-gradient(top, #3c3c3c 0%, #323232 100%);
+          /* FF3.6-15 */
+          background: -webkit-linear-gradient(top, #3c3c3c 0%, #323232 100%);
+          /* Chrome10-25,Safari5.1-6 */
+          background: linear-gradient(to bottom, #3c3c3c 0%, #323232 100%);
+          /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
+          .page-content .page-market .page-market-server > div:last-of-type select:hover {
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#515151+0,424242+100 */
+            background: #464646;
+            /* Old browsers */
+            background: -moz-linear-gradient(top, #464646 0%, #3c3c3c 100%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, #464646 0%, #3c3c3c 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, #464646 0%, #3c3c3c 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
     .page-content .page-market > small {
       font-size: 13px;
       color: #888;
       padding: 15px;
       display: block;
       text-align: center; }
+      .page-content .page-market > small p {
+        display: block;
+        margin-bottom: 8px; }
     .page-content .page-market table {
       width: 100%; }
       .page-content .page-market table th, .page-content .page-market table td {
@@ -388,21 +422,40 @@ a {
         color: #888;
         text-align: left; }
       .page-content .page-market table tr {
-        border-bottom: solid 1px #000; }
+        border-bottom: solid 1px #444; }
         .page-content .page-market table tr:hover {
           background-color: #333; }
           .page-content .page-market table tr:hover td.retainer {
             color: #fff; }
       .page-content .page-market table td {
-        border-right: solid 1px #000; }
+        border-right: solid 1px #262626; }
         .page-content .page-market table td:last-of-type {
           border: none; }
-        .page-content .page-market table td.price {
+        .page-content .page-market table td.price-total {
           font-size: 18px;
-          color: yellow; }
+          color: yellow;
+          margin-bottom: 5px; }
+          .page-content .page-market table td.price-total img {
+            margin: 0 0 4px 5px; }
+        .page-content .page-market table td.price-unit {
+          font-size: 16px;
+          color: #8d8d00; }
         .page-content .page-market table td.qty {
-          font-size: 16px; }
+          font-size: 14px; }
         .page-content .page-market table td.retainer {
           color: #aaa; }
         .page-content .page-market table td.town img {
           margin: -8px 0; }
+  .page-content .page-links h4 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 15px; }
+  .page-content .page-links > div {
+    margin-bottom: 30px; }
+    .page-content .page-links > div > div {
+      margin-left: 5px;
+      padding: 15px;
+      border-left: solid 2px #888; }

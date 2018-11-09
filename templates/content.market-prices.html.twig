@@ -1,0 +1,32 @@
+{% for row in market.Prices %}
+    <tr>
+        <td valign="middle" align="center">
+            <img src="/misc/coin.png" height="16">
+        </td>
+        <td class="price-total" valign="middle">
+            {{ row.PriceTotal|number_format }}
+            {% if row.PriceTotal == cheapest %}
+                <img src="/misc/cheapest.png">
+            {% endif %}
+        </td>
+        <td class="price-unit" valign="middle">
+            {{ row.PricePerUnit|number_format }}
+        </td>
+        <td class="qty" valign="middle">
+            {{ row.Quantity|number_format }}
+        </td>
+        <td class="hq" valign="middle" align="center">
+            {{ row.IsHQ ? '<img src="/misc/hq.png">' : '' }}
+        </td>
+        <td class="retainer" valign="middle">
+            {{ row.RetainerName }}
+        </td>
+        <td class="town" valign="middle" align="center">
+            <img src="https://xivapi.com{{ row.Town.Icon }}" height="28">
+        </td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="7">None for sale!</td>
+    </tr>
+{% endfor %}
