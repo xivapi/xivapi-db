@@ -50,7 +50,7 @@ table {
 
 html {
   font-family: 'Roboto', sans-serif;
-  background-color: #222222;
+  background-color: #181818;
   color: #fff; }
 
 body {
@@ -446,10 +446,10 @@ header {
       left: 50%;
       transform: translate(-50%, -50%); }
   header .search {
-    flex: 0 1 calc(100% - 820px);
+    flex: 0 1 calc(100% - 870px);
     padding: 10px; }
     header .search input {
-      width: 100%;
+      width: 90%;
       font-size: 20px;
       font-weight: 300;
       color: #f8ffb7;
@@ -461,22 +461,35 @@ header {
       border-radius: 3px;
       background-color: #515151; }
   header nav {
-    flex: 0 1 600px;
+    flex: 0 1 650px;
     padding: 10px;
     display: flex; }
     header nav button {
       flex: 1 1 auto;
-      font-size: 16px;
-      font-weight: 300;
+      font-size: 18px;
+      font-weight: 400;
       color: #ccc;
       outline: none;
       line-height: 52px;
       padding: 0 15px;
       border: none;
       transition: .2s;
-      background-color: #282828;
+      background-color: transparent;
+      text-shadow: 0 1px #000;
       border-radius: 5px;
       margin-left: 10px; }
       header nav button:hover {
-        background-color: #1a1a1a;
+        background-color: #181818;
         cursor: pointer; }
+      header nav button.login {
+        font-weight: 600;
+        color: #7dff68; }
+
+.home {
+  text-align: center;
+  padding: 100px 0; }
+  .home h1 {
+    font-size: 42px;
+    font-weight: 300;
+    color: #888;
+    display: block; }
