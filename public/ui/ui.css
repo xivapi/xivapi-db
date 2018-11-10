@@ -238,9 +238,9 @@ a {
       transform: translate(-50%, -50%);
       z-index: 3; }
     .page-top > div:first-of-type img:nth-of-type(2), .page-top > div:first-of-type img:nth-of-type(3), .page-top > div:first-of-type img:nth-of-type(4) {
-      filter: blur(25px);
-      width: 150px;
-      height: 150px;
+      filter: blur(20px);
+      width: 250px;
+      height: 250px;
       position: absolute;
       left: 50%;
       top: 50%;
