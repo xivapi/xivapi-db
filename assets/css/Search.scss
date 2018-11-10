@@ -1,74 +1,42 @@
-.search {
-    input {
-        width: 100%;
-        padding: 12px 15px;
-        font-size: 24px;
-        color: #f1e8aa;
-        font-weight: 300;
-        border: solid 1px #000;
-        outline: none;
-        border-radius: 4px;
-        box-shadow: 0 1px 3px #000;
+.search-progress {
+    position: absolute;
+    left: 0; top: 0; right: 0;
+    z-index: 500;
+    height: 8px;
+    background-color: #ffeb00;
+    box-shadow: 0 1px 3px #000;
+    transition: 0s;
+    width: 0;
+    opacity: 1;
 
-        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#515151+0,424242+100 */
-        background: rgb(81,81,81); /* Old browsers */
-        background: -moz-linear-gradient(top, rgba(81,81,81,1) 0%, rgba(66,66,66,1) 100%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(top, rgba(81,81,81,1) 0%,rgba(66,66,66,1) 100%); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(to bottom, rgba(81,81,81,1) 0%,rgba(66,66,66,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#424242',GradientType=0 ); /* IE6-9 */
+    &.loading {
+        transition: 1s;
+        width: 80%;
     }
 
-    nav {
-        margin-top: 8px;
-
-        > button {
-            font-size: 16px;
-            letter-spacing: 1px;
-            color: #fff;
-            padding: 10px 15px 9px 15px;
-
-            border: solid 1px #000;
-            outline: none;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px #000;
-
-            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#515151+0,424242+100 */
-            background: rgb(81,81,81); /* Old browsers */
-            background: -moz-linear-gradient(top, rgba(60,60,60,1) 0%, rgba(40,40,40,1) 100%); /* FF3.6-15 */
-            background: -webkit-linear-gradient(top, rgba(60,60,60,1) 0%,rgba(40,40,40,1) 100%); /* Chrome10-25,Safari5.1-6 */
-            background: linear-gradient(to bottom, rgba(60,60,60,1) 0%,rgba(40,40,40,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#424242',GradientType=0 ); /* IE6-9 */
-
-            &:hover {
-                cursor: pointer;
-
-                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#515151+0,424242+100 */
-                background: rgb(81,81,81); /* Old browsers */
-                background: -moz-linear-gradient(top, rgba(70,70,70,1) 0%, rgba(55,55,55,1) 100%); /* FF3.6-15 */
-                background: -webkit-linear-gradient(top, rgba(70,70,70,1) 0%,rgba(55,55,55,1) 100%); /* Chrome10-25,Safari5.1-6 */
-                background: linear-gradient(to bottom, rgba(70,70,70,1) 0%,rgba(55,55,55,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#424242',GradientType=0 ); /* IE6-9 */
-            }
-        }
+    &.finished {
+        transition: .5s;
+        width: 100%;
+        opacity: 0;
     }
 }
 
 .search-results {
+    max-width: 1600px;
     display: none;
+    margin: 0 auto;
 
     &.on {
         display: block;
     }
 
     .results {
-        margin: 0 100px;
-
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: flex-start;
-        //align-items: flex-start;
         align-self: flex-start;
+        margin: 0 -10px 0 0;
 
         > a {
             flex: 0 1 calc(25% - 10px);

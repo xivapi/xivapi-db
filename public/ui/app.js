@@ -82,11 +82,17 @@ var timeout = null,
     searchString = '',
     searchPage = 1,
     searchIndexes = ['item', 'recipe', 'achievement', 'action', 'quest', 'bnpcname', 'enpcresident', 'companion', 'mount', 'fate', 'leve', 'instancecontent', 'emote'],
-    canLoadMoreResults = false;
+    canLoadMoreResults = false,
+    resultsPage = 1;
 
 // on searching
 $search.on('keyup', function (event) {
     var string = $(event.target).val().trim();
+
+    // if same, do nothing
+    if (searchString === string && searchPage === resultsPage) {
+        return;
+    }
 
     if (searchString !== string) {
         searchString = string;
@@ -97,12 +103,13 @@ $search.on('keyup', function (event) {
     if (string.length < 1) {
         // hide results
         $results.removeClass('on');
-
         return;
     }
 
     clearTimeout(timeout);
     timeout = setTimeout(function () {
+        $('.search-progress').addClass('loading');
+
         $.ajax({
             url: 'https://xivapi.com/search',
             data: {
@@ -113,8 +120,11 @@ $search.on('keyup', function (event) {
                 key: 'c859af13b62e465baa340a91'
             },
             success: function success(response) {
+                $('.search-progress').addClass('finished');
+
                 var results = response.Results;
                 canLoadMoreResults = response.Pagination.PageNext !== null;
+                resultsPage = searchPage;
 
                 // reset if page 1
                 if (response.Pagination.Page === 1 || resetSearch) {
@@ -136,12 +146,16 @@ $search.on('keyup', function (event) {
                 if (canLoadMoreResults) {
                     $('.canLoadMoreResults').addClass('on');
                 }
+
+                setTimeout(function () {
+                    $('.search-progress').removeClass('loading finished');
+                }, 1000);
             },
             error: function error(a, b, c) {
                 console.error(a, b, c);
             }
         });
-    }, 150);
+    }, 500);
 });
 
 // Auto load results on scroll
